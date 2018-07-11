@@ -25,8 +25,8 @@ namespace Service.Controllers
 
 
         [HttpPost]
-        [ActionName("FindClosestFriends")]
-        public IActionResult FindClosestFriends([FromBody]Location location)
+        [ActionName("FindClosestFriends")]  
+        public ActionResult<IEnumerable<Friend>> FindClosestFriends([FromBody]Location location)
         {
             try
             {
@@ -40,7 +40,7 @@ namespace Service.Controllers
 
         [HttpPost]
         [ActionName("AddFriend")]
-        public IActionResult AddFriend([FromBody]Friend friend)
+        public ActionResult AddFriend([FromBody]Friend friend)
         {
             try
             {
@@ -55,7 +55,7 @@ namespace Service.Controllers
 
         [HttpPost]
         [ActionName("DeleteFriend")]
-        public IActionResult DeleteFriend([FromBody]Friend friend)
+        public ActionResult DeleteFriend([FromBody]Friend friend)
         {
             try
             {

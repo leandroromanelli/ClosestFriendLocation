@@ -32,7 +32,7 @@ namespace Service.Controllers
                 claims: claims,
                 expires: DateTime.UtcNow.AddDays(60),
                 notBefore: DateTime.UtcNow,
-                signingCredentials: new SigningCredentials(new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["SigningKey"])),
+                signingCredentials: new SigningCredentials(new SymmetricSecurityKey(Encoding.UTF8.GetBytes(""/*_configuration["SigningKey"]*/)),
                         SecurityAlgorithms.HmacSha256)
             );
 
