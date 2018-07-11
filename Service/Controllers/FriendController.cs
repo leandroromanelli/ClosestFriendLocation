@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Domain.Entities;
 using Domain.Repositories;
 using Domain.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -12,6 +13,7 @@ namespace Service.Controllers
 {
     [Produces("application/json")]
     [Route("api/Friend")]
+    [Authorize]
     public class FriendController : Controller
     {
         private IFriendRepository _friendRepository;
@@ -70,7 +72,7 @@ namespace Service.Controllers
 
         [HttpPost]
         [ActionName("UpdateFriend")]
-        public IActionResult UpdateFriend([FromBody]Friend friend)
+        public ActionResult UpdateFriend([FromBody]Friend friend)
         {
             try
             {

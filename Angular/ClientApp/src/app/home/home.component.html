@@ -17,7 +17,7 @@
       <p>Latitude</p>
     </div>
     <div class="col-sm-6">
-      <input type="text" ng-model="[(latitude)]" />
+      <input type="text" [(ng-model)]="latitude" />
     </div>
   </div>
 
@@ -26,7 +26,7 @@
       <p>Longitude</p>
     </div>
     <div class="col-sm-6">
-      <input type="text" ng-model="[(longitude)]" />
+      <input type="text" [(ng-model)]="longitude" />
     </div>
   </div>
 
@@ -35,37 +35,17 @@
   </div>
 
   <div class="row" style="text-align:center">
-    <input type="button" class="btn btn-primary" value="Enviar" />
+    <input type="button" class="btn btn-primary" value="Enviar" (click)="getClosestFriends()" />
   </div>
 
   <div class="row" style="text-align:center">
     <p>&nbsp;</p>
   </div>
 
-  <div class="row" style="text-align:center">
-
-    <div class="col-sm-1">
-    </div>
-
+  <div class="row" style="text-align:center" *ngFor="let f of friends">
     <div class="col-sm-3 card">
-      <h4>Amigo</h4>
-      <p>Endereco</p>
-    </div>
-
-    <div class="col-sm-1">
-    </div>
-
-    <div class="col-sm-3 card">
-      <h4>Amigo</h4>
-      <p>Endereco</p>
-    </div>
-
-    <div class="col-sm-1">
-    </div>
-
-    <div class="col-sm-3 card">
-      <h4>Amigo</h4>
-      <p>Endereco</p>
+      <h4>{{ f.name }}</h4>
+      <p>{{ f.address.street + ', ' + f.address.number }}</p>
     </div>
   </div>
 

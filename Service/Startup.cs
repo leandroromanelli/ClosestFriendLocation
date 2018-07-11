@@ -45,7 +45,7 @@ namespace Service
                             ValidateIssuerSigningKey = true,
                             ValidIssuer = "Issuer",
                             ValidAudience = "Audience",
-                            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["SigningKey"]))
+                            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("PL6TsZZY36hWXMssSzNydYXYB9KF"))
                         };
                     });
 
