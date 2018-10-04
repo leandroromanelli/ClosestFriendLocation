@@ -1,2 +1,2 @@
-# TesteViaVarejo
-Teste Via Varejo
+# ClosestFriendLocation
+Api de cadastro e localização de amigos próximos.
