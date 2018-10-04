@@ -8,8 +8,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Infra.Migrations
 {
-    [DbContext(typeof(TesteViaVarejoContext))]
-    partial class TesteViaVarejoContextModelSnapshot : ModelSnapshot
+    [DbContext(typeof(ClosestFriendLocationContext))]
+    partial class ClosestFriendLocationContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
         {

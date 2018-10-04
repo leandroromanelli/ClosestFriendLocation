@@ -13,7 +13,7 @@ export class HomeComponent {
   public token: string = '';
 
   constructor(private http: HttpClient) {
-    this.http.get('http://localhost:49885/').subscribe(data => { this.token = data as string });
+    this.http.get('http://localhost:1184/').subscribe(data => { this.token = data as string });
   }
 
   getClosestFriends() {
@@ -21,7 +21,7 @@ export class HomeComponent {
     headers.append('Content-Type', 'application/json');
     headers.append('authorization', 'bearer ' + this.token);
 
-    this.http.post('http://localhost:49885/',
+    this.http.post('http://localhost:1184/',
       { latitude: this.latitude, longitude: this.longitude },
     )
       .subscribe(data => {

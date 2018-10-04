@@ -55,7 +55,7 @@ namespace Service
 
             services.AddScoped<LocationService>();
 
-            services.AddDbContext<TesteViaVarejoContext>(options => options.UseSqlServer(Configuration.GetConnectionString("ConnectionString")));
+            services.AddDbContext<ClosestFriendLocationContext>(options => options.UseSqlServer(Configuration.GetConnectionString("ConnectionString")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -17,7 +17,7 @@ namespace Test
     public class ServiceTest
     {
         private IFriendRepository _friendRepository;
-        private TesteViaVarejoContext _testeViaVarejoContext;
+        private ClosestFriendLocationContext _closestFriendLocationContext;
         private string _connectionString;
         private LocationService _locationService;
 
@@ -27,9 +27,9 @@ namespace Test
             _connectionString = @"Server=(LocalDB)\MSSQLLocalDB;Integrated Security=true;";
             opb.UseSqlServer(_connectionString);
 
-            _testeViaVarejoContext = new TesteViaVarejoContext(opb.Options);
+            _closestFriendLocationContext = new ClosestFriendLocationContext(opb.Options);
 
-            _friendRepository = new FriendRepository(_testeViaVarejoContext);
+            _friendRepository = new FriendRepository(_closestFriendLocationContext);
 
             _locationService = new LocationService(_friendRepository);
         }

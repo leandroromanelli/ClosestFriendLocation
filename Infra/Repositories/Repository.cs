@@ -9,9 +9,9 @@ namespace Infra.Repositories
 {
     public class Repository<T> : IRepository<T> where T : class
     {
-        TesteViaVarejoContext _context;
+        ClosestFriendLocationContext _context;
 
-        public Repository(TesteViaVarejoContext context)
+        public Repository(ClosestFriendLocationContext context)
         {
             _context = context;
         }

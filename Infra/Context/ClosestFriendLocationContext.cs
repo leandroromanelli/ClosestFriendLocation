@@ -6,9 +6,9 @@ using System.Text;
 
 namespace Infra.Context
 {
-    public class TesteViaVarejoContext : DbContext
+    public class ClosestFriendLocationContext : DbContext
     {
-        public TesteViaVarejoContext(DbContextOptions options) : base(options)
+        public ClosestFriendLocationContext(DbContextOptions options) : base(options)
         {
 
         }

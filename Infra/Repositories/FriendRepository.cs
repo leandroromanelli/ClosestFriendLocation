@@ -11,8 +11,8 @@ namespace Infra.Repositories
     public class FriendRepository : Repository<Friend>, IFriendRepository
     {
 
-        TesteViaVarejoContext _context;
-        public FriendRepository(TesteViaVarejoContext context) : base(context)
+        ClosestFriendLocationContext _context;
+        public FriendRepository(ClosestFriendLocationContext context) : base(context)
         {
             _context = context;
         }
