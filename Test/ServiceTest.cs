@@ -6,7 +6,7 @@ using Infra.Repositories;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Service.Controllers;
+using Api.Controllers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,7 +24,7 @@ namespace Test
         public ServiceTest()
         {
             var opb = new DbContextOptionsBuilder();
-            _connectionString = @"Server=(LocalDB)\MSSQLLocalDB;Integrated Security=true;";
+            _connectionString = @"Server=localhost\sqlexpress;Database=ClosestFriendLocation;User Id=sa;Password=123456;";
             opb.UseSqlServer(_connectionString);
 
             _closestFriendLocationContext = new ClosestFriendLocationContext(opb.Options);
@@ -40,35 +40,44 @@ namespace Test
             var retorno = new FriendController(_friendRepository, _locationService)
                 .FindClosestFriends(new Location() { Latitude = 0.0, Longitude = 0.0 });
 
-            Assert.IsInstanceOfType(retorno.Result, typeof(OkResult));
+            Assert.IsInstanceOfType(retorno.Result, typeof(OkObjectResult));
 
-            Assert.IsTrue(retorno.Value.ToList().Count == 3);
         }
 
-        private void Populate()
+        [TestMethod]
+        public void Populate()
         {
-            var friends = new List<Friend>();
-            for (int i = 0; i < new Random().Next(10, 20); i++)
+            try
             {
-                friends.Add(new Friend()
+                var friends = new List<Friend>();
+                for (int i = 0; i < new Random().Next(10, 20); i++)
                 {
-                    Name = string.Format("Amigo_{0}", i),
-                    Address = new Address()
+                    friends.Add(new Friend()
                     {
-                        Street = string.Format("Rua {0}", i),
-                        Number = i.ToString(),
-                        Location = new Location()
+                        Name = string.Format("Amigo_{0}", i),
+                        Address = new Address()
                         {
-                            Latitude = ((float)new Random().NextDouble() * 10.0),
-                            Longitude = ((float)new Random().NextDouble() * 10.0)
+                            Street = string.Format("Rua {0}", i),
+                            Number = i.ToString(),
+                            Location = new Location()
+                            {
+                                Latitude = ((float)new Random().NextDouble() * 10.0),
+                                Longitude = ((float)new Random().NextDouble() * 10.0)
+                            }
                         }
-                    }
-                });
-            }
+                    });
+                }
 
-            foreach(var f in friends)
+                foreach (var f in friends)
+                {
+                    _friendRepository.Add(f);
+                }
+
+                Assert.IsTrue(true);
+            }
+            catch  (Exception ex)
             {
-                _friendRepository.Add(f);
+                Assert.Fail();
             }
         }
     }

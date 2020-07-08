@@ -8,12 +8,13 @@ using Domain.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 
-namespace Service.Controllers
+namespace Api.Controllers
 {
     [Produces("application/json")]
     [Route("api/Friend")]
-    [Authorize]
+    //[Authorize]
     public class FriendController : Controller
     {
         private IFriendRepository _friendRepository;
@@ -25,24 +26,38 @@ namespace Service.Controllers
             _locationService = locationService;
         }
 
-
-        [HttpPost]
-        [ActionName("FindClosestFriends")]  
-        public ActionResult<IEnumerable<Friend>> FindClosestFriends([FromBody]Location location)
+        [HttpGet("")]
+        [ActionName("")]
+        public ActionResult<IEnumerable<Friend>> Get()
         {
             try
             {
-                return Ok(_locationService.GetClosestFriends(location));
+                return Ok(_friendRepository.GetComplete());
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return StatusCode(StatusCodes.Status500InternalServerError, ex);
             }
         }
 
-        [HttpPost]
+
+        [HttpPost("FindClosestFriends")]
+        [ActionName("FindClosestFriends")]
+        public ActionResult<IEnumerable<Friend>> FindClosestFriends([FromBody] Location location)
+        {
+            try
+            {
+                return Ok(_locationService.GetClosestFriends(location));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, ex);
+            }
+        }
+
+        [HttpPost("AddFriend")]
         [ActionName("AddFriend")]
-        public ActionResult AddFriend([FromBody]Friend friend)
+        public ActionResult AddFriend([FromBody] Friend friend)
         {
             try
             {
@@ -55,9 +70,9 @@ namespace Service.Controllers
             }
         }
 
-        [HttpPost]
+        [HttpPost("DeleteFriend")]
         [ActionName("DeleteFriend")]
-        public ActionResult DeleteFriend([FromBody]Friend friend)
+        public ActionResult DeleteFriend([FromBody] Friend friend)
         {
             try
             {
@@ -70,9 +85,9 @@ namespace Service.Controllers
             }
         }
 
-        [HttpPost]
+        [HttpPost("UpdateFriend")]
         [ActionName("UpdateFriend")]
-        public ActionResult UpdateFriend([FromBody]Friend friend)
+        public ActionResult UpdateFriend([FromBody] Friend friend)
         {
             try
             {
