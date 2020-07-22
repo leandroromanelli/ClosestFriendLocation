@@ -13,6 +13,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Angular", "Angular\Angular.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Api", "Api\Api.csproj", "{CBFD72B3-6395-425A-9594-1969DB81D3AE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Web", "Web\Web.csproj", "{D2BA7C42-DB78-48AA-B162-65B88DF66422}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{CBFD72B3-6395-425A-9594-1969DB81D3AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CBFD72B3-6395-425A-9594-1969DB81D3AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CBFD72B3-6395-425A-9594-1969DB81D3AE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D2BA7C42-DB78-48AA-B162-65B88DF66422}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D2BA7C42-DB78-48AA-B162-65B88DF66422}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D2BA7C42-DB78-48AA-B162-65B88DF66422}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D2BA7C42-DB78-48AA-B162-65B88DF66422}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
